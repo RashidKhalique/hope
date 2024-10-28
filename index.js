@@ -1,21 +1,20 @@
 import express from "express";
 import mongoose from "mongoose";
-import { router as authRouter } from "./Routes/user.route.js"; // Import named export
+import { router as authRouter } from "./Routes/user.route.js"; // Ensure this path is correct
 import cors from "cors";
+import dotenv from "dotenv";
 
-
-// Load environment variables from .env file
-
+dotenv.config(); // Load environment variables from .env file
 
 const app = express();
-const port = 3000; // Set the port from environment variable or default to 3000
+const port = process.env.PORT || 3000; // Set the port
 
 // Middleware to parse JSON
 app.use(express.json());
 
 // CORS configuration
 app.use(cors({
-    origin: `http://localhost:${port}`, // Use the domain or localhost
+    origin: `http://localhost:${port}`, // Allow requests from your frontend
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     credentials: true,
     allowedHeaders: "Content-Type, Authorization",
@@ -23,17 +22,24 @@ app.use(cors({
 
 // Use the authentication router
 app.use('/api', authRouter);
+const mongoURI = "mongodb+srv://rashidkhanjamali26:Rashid123@auth.k88g2.mongodb.net/";
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/newproject")
+mongoose.connect(mongoURI)
     .then(() => {
         console.log("Database connection established successfully");
     })
     .catch((err) => {
         console.error("Database connection error: ", err);
+        // Optionally, you can exit the process if you can't connect
+        process.exit(1); 
     });
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is running at http://${port}`);
+    console.log(`Server is running at http://localhost:${port}`);
 });
+
+
+
+
