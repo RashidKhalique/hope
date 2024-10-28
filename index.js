@@ -9,7 +9,6 @@ dotenv.config(); // Load environment variables from .env file
 const app = express();
 const port = process.env.PORT || 3000; // Set the port
 
-// Middleware to parse JSON
 app.use(express.json());
 
 // CORS configuration
@@ -22,6 +21,9 @@ app.use(cors({
 
 // Use the authentication router
 app.use('/api', authRouter);
+app.get('/', (req, res) => {
+    res.status(200).json({ success: true, message: "Root Route Works" });
+});
 const mongoURI = "mongodb+srv://rashidkhanjamali26:Rashid123@auth.k88g2.mongodb.net/";
 
 // Connect to MongoDB
@@ -39,6 +41,7 @@ mongoose.connect(mongoURI)
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
+
 
 
 
