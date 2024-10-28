@@ -21,7 +21,7 @@ app.use(cors({
 
 // Use the authentication router
 app.use('/api', authRouter);
-app.get('/', (req, res) => {
+app.get('https://hope-rashidkhaliques-projects.vercel.app/', (req, res) => {
     res.status(200).json({ success: true, message: "Root Route Works" });
 });
 const mongoURI = "mongodb+srv://rashidkhanjamali26:Rashid123@auth.k88g2.mongodb.net/";
