@@ -1,14 +1,13 @@
 {
-    "routes": [
-        {
-            "method": "POST",
-            "path": "/login",
-            "controller": "AuthController.Login"
-        },
-        {
-            "method": "POST",
-            "path": "/signup",
-            "controller": "AuthController.Signup"
-        }
+    "rewrites": [
+      {
+        "source": "/login",
+        "destination": "/api/login"
+      },
+      {
+        "source": "/signup",
+        "destination": "/api/signup"
+      }
     ]
-}
+  }
+  
