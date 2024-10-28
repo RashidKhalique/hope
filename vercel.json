@@ -1,6 +1,14 @@
 {
-    "rewrites": [
-      { "source": "/", "destination": "/index.html" }
+    "routes": [
+        {
+            "method": "POST",
+            "path": "/login",
+            "controller": "AuthController.Login"
+        },
+        {
+            "method": "POST",
+            "path": "/signup",
+            "controller": "AuthController.Signup"
+        }
     ]
-  }
-  
+}
