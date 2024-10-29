@@ -13,7 +13,7 @@ app.use(express.json());
 
 // CORS configuration
 app.use(cors({
-    origin: `hope-rashidkhaliques-projects.vercel.app`,
+    origin: `http://localhost:3000`,
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     credentials: true,
     allowedHeaders: "Content-Type, Authorization",
@@ -21,7 +21,7 @@ app.use(cors({
 
 // Use the authentication router
 app.use('/api', authRouter);
-app.get('https://hope-rashidkhaliques-projects.vercel.app/', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).json({ success: true, message: "Root Route Works" });
 });
 const mongoURI = "mongodb+srv://rashidkhanjamali26:Rashid123@auth.k88g2.mongodb.net/";
@@ -33,7 +33,6 @@ mongoose.connect(mongoURI)
     })
     .catch((err) => {
         console.error("Database connection error: ", err);
-        // Optionally, you can exit the process if you can't connect
         process.exit(1); 
     });
 
