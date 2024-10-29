@@ -13,7 +13,7 @@ app.use(express.json());
 
 // CORS configuration
 app.use(cors({
-    origin: `http://localhost:3000`,
+    origin: `https://hope-beraan8s8-rashidkhaliques-projects.vercel.app/`,
     methods: "GET,POST,PUT,DELETE,OPTIONS",
     credentials: true,
     allowedHeaders: "Content-Type, Authorization",
